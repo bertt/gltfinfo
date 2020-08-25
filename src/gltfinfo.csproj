@@ -3,6 +3,19 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	<PackAsTool>true</PackAsTool>
+	<PackageOutputPath>./nupkg</PackageOutputPath>
+	<Version>0.1</Version>
+    <Authors>Bert Temme</Authors>
+    <Company>Bert Temme</Company>
+    <Description>Tooling for getting detailed glTF information</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/bertt/gltfinfo</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>gltf</PackageTags>
+    <PackageReleaseNotes>0.1 initial release</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/bertt/gltfinfo</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,6 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="1.glb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="tree.glb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

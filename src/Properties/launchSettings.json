@@ -2,7 +2,7 @@
   "profiles": {
     "gltfinfo": {
       "commandName": "Project",
-      "commandLineArgs": "-i tree.glb"
+      "commandLineArgs": "-i 1.glb"
     }
   }
 }
