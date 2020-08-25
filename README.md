@@ -1,6 +1,6 @@
 # gltfinfo
 
-Tool for getting glTF information like number of triangles, vertice positions, boundingbox, custom vertex attribute _BATCHID (used in 3D Tiles)
+Tool for getting glTF geometry information like number of triangles, vertice positions, boundingbox, custom vertex attribute _BATCHID (used in 3D Tiles)
 
 ## Installation
 
