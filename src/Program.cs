@@ -34,8 +34,22 @@ namespace src
                 Console.WriteLine("glTF primitives: " + glb.LogicalMeshes[0].Primitives.Count);
                 var triangles = Schema2Toolkit.EvaluateTriangles(glb.DefaultScene).ToList();
                 Console.WriteLine("glTF triangles: " + triangles.Count);
+                var print_max_vertices = 3;
+                Console.WriteLine($"glTF vertices (first {print_max_vertices}): ");
 
                 var points = triangles.SelectMany(item => new[] { item.A.GetGeometry().GetPosition(), item.B.GetGeometry().GetPosition(), item.C.GetGeometry().GetPosition() }.Distinct().ToList());
+
+                var i = 0;
+                foreach (var p in points)
+                {
+                    if (i < print_max_vertices)
+                    {
+                        Console.WriteLine($"{p.X}, {p.Y}, {p.Z}");
+                        i++;
+                    }
+                }
+
+
                 var xmin = (from p in points select p.X).Min();
                 var xmax = (from p in points select p.X).Max();
                 var ymin = (from p in points select p.Y).Min();
