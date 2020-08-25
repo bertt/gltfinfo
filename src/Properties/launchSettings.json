@@ -2,7 +2,7 @@
   "profiles": {
     "gltfinfo": {
       "commandName": "Project",
-      "commandLineArgs": "-i 1.glb"
+      "commandLineArgs": "-i seat_red_origin.glb"
     }
   }
 }

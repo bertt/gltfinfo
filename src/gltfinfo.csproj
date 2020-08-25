@@ -6,7 +6,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	<PackAsTool>true</PackAsTool>
 	<PackageOutputPath>./nupkg</PackageOutputPath>
-	<Version>0.1</Version>
+	<Version>0.1.1</Version>
     <Authors>Bert Temme</Authors>
     <Company>Bert Temme</Company>
     <Description>Tooling for getting detailed glTF information</Description>
@@ -14,7 +14,7 @@
     <RepositoryUrl>https://github.com/bertt/gltfinfo</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>gltf</PackageTags>
-    <PackageReleaseNotes>0.1 initial release</PackageReleaseNotes>
+    <PackageReleaseNotes>0.1.1 print first 3 vertices</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/bertt/gltfinfo</PackageProjectUrl>
   </PropertyGroup>
 
@@ -25,6 +25,12 @@
 
   <ItemGroup>
     <None Update="1.glb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="seat_red.glb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="seat_red_origin.glb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="tree.glb">
