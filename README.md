@@ -1,7 +1,6 @@
 # gltfinfo
 
-Tool for getting glTF information like number of triangles, boundingbox, custom vertex attribute _BATCHID (used in 3D Tiles)
-
+Tool for getting glTF geometry information like number of triangles, vertice positions, boundingbox, custom vertex attribute _BATCHID (used in 3D Tiles)
 
 ## Installation
 
@@ -12,7 +11,7 @@ Requirement: Install .NET Core SDK 3.1 https://dotnet.microsoft.com/download
 https://www.nuget.org/packages/gltfinfo/
 
 ```
-$ dotnet tool install --global gltfinfo --version 0.1.0
+$ dotnet tool install -g gltfinfo
 ```
 
 or update:
