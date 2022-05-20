@@ -32,7 +32,7 @@ namespace src
                 Console.WriteLine("glTF generator: " + glb.Asset.Generator);
                 Console.WriteLine("glTF version:" + glb.Asset.Version);
                 Console.WriteLine("glTF primitives: " + glb.LogicalMeshes[0].Primitives.Count);
-                var triangles = Schema2Toolkit.EvaluateTriangles(glb.DefaultScene).ToList();
+                var triangles = Toolkit.EvaluateTriangles(glb.DefaultScene).ToList();
                 Console.WriteLine("glTF triangles: " + triangles.Count);
                 var print_max_vertices = 3;
                 Console.WriteLine($"glTF vertices (first {print_max_vertices}): ");
