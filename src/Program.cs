@@ -68,6 +68,12 @@ namespace src
                         Console.WriteLine($"batch ids (unique): {string.Join(',', batchIds.Distinct())}");
 
                     }
+                    else if (primitive.GetVertexAccessor("_FEATURE_ID_0") != null)
+                    {
+                        var featureIds = primitive.GetVertexAccessor("_FEATURE_ID_0").AsScalarArray();
+                        Console.WriteLine($"FEATURE_ID_0 (unique): {string.Join(',', featureIds.Distinct())}");
+
+                    }
                     else
                     {
                         Console.WriteLine($"No _BATCHID attribute found...");
