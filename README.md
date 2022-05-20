@@ -1,10 +1,11 @@
 # gltfinfo
 
-Tool for getting glTF geometry information like number of triangles, vertice positions, boundingbox, custom vertex attribute _BATCHID (used in 3D Tiles)
+Tool for getting glTF geometry information like number of triangles, vertice positions, boundingbox, custom vertex attribute _BATCHID (used in 3D Tiles 1.0)
+or _FEATURE_ID_0 (used in 3D Tiles Next/1.1).
 
 ## Installation
 
-Requirement: Install .NET Core SDK 3.1 https://dotnet.microsoft.com/download
+Requirement: Install .NET SDK 6.0 https://dotnet.microsoft.com/download
 
 - Install from NuGet
 
@@ -40,10 +41,21 @@ glTF: no extensions used.
 glTF: no extensions required.
 ```
 
-Sample when glb contains batch information (3 primitives in this case):
+Sample when glTF contains batch information (3 primitives in this case):
 
 ```
 Primitive 0 (TRIANGLES) batch ids (unique): 0,1,2,3,4,5,6,7,8,9,10,11,12,13
 Primitive 1 (TRIANGLES) batch ids (unique): 0,1,2,3,4,5,6,8,9,11
 Primitive 2 (TRIANGLES) batch ids (unique): 0,1,2,3,4,7,9,10,11,12,13
 ```
+
+Sample when glTF contains FeatureId information (primitive in this case):
+
+```
+Primitive 0 (TRIANGLES) FEATURE_ID_0 (unique): 0,1,2,3
+```
+
+## History
+
+- 22-05-22: Version 2.0 - .NET 6.0 and starting support 3D Tiles Next/1.1 
+
