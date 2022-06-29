@@ -5,6 +5,7 @@ using SharpGLTF.Validation;
 using System;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 
 namespace src
 {
@@ -33,14 +34,15 @@ namespace src
                 Console.WriteLine("glTF version:" + glb.Asset.Version);
                 Console.WriteLine("glTF primitives: " + glb.LogicalMeshes[0].Primitives.Count);
                 var triangles = Toolkit.EvaluateTriangles(glb.DefaultScene).ToList();
+                // triangles.First().A.
                 Console.WriteLine("glTF triangles: " + triangles.Count);
                 var print_max_vertices = 3;
                 Console.WriteLine($"glTF vertices (first {print_max_vertices}): ");
 
-                var points = triangles.SelectMany(item => new[] { item.A.GetGeometry().GetPosition(), item.B.GetGeometry().GetPosition(), item.C.GetGeometry().GetPosition() }.Distinct().ToList());
+                var positions = triangles.SelectMany(item => new[] { item.A.GetGeometry().GetPosition(), item.B.GetGeometry().GetPosition(), item.C.GetGeometry().GetPosition() }.Distinct().ToList());
 
                 var i = 0;
-                foreach (var p in points)
+                foreach (var p in positions)
                 {
                     if (i < print_max_vertices)
                     {
@@ -48,19 +50,38 @@ namespace src
                         i++;
                     }
                 }
+                if (triangles.First().A.GetGeometry().TryGetNormal(out Vector3 n))
+                {
+                    Console.WriteLine("Vertices do contains normals");
+                }
+                else
+                {
+                    Console.WriteLine("Vertices do not contains normals");
+                }
 
 
-                var xmin = (from p in points select p.X).Min();
-                var xmax = (from p in points select p.X).Max();
-                var ymin = (from p in points select p.Y).Min();
-                var ymax = (from p in points select p.Y).Max();
-                var zmin = (from p in points select p.Z).Min();
-                var zmax = (from p in points select p.Z).Max();
+                var xmin = (from p in positions select p.X).Min();
+                var xmax = (from p in positions select p.X).Max();
+                var ymin = (from p in positions select p.Y).Min();
+                var ymax = (from p in positions select p.Y).Max();
+                var zmin = (from p in positions select p.Z).Min();
+                var zmax = (from p in positions select p.Z).Max();
 
                 Console.WriteLine($"Bounding box vertices (xmin, xmax, ymin, ymax, zmin, zmax): {xmin}, {xmax}, {ymin}, {ymax}, {zmin}, {zmax}");
+
+
                 foreach (var primitive in glb.LogicalMeshes[0].Primitives)
                 {
-                    Console.Write($"Primitive {primitive.LogicalIndex} ({primitive.DrawPrimitiveType}) ");
+                    Console.WriteLine($"Primitive {primitive.LogicalIndex} ({primitive.DrawPrimitiveType}) ");
+
+                    Console.WriteLine($"Material doubleSided: {primitive.Material.DoubleSided}");
+                    Console.WriteLine($"Material unlit: {primitive.Material.Unlit}");
+                    Console.WriteLine($"Material alpha: {primitive.Material.Alpha}");
+                    Console.WriteLine($"Material alphacutoff: {primitive.Material.AlphaCutoff}");
+                    foreach (var channel in primitive.Material.Channels)
+                    {
+                        Console.WriteLine($"Material channel: {channel.Key}");
+                    }
 
                     if (primitive.GetVertexAccessor("_BATCHID") != null)
                     {
@@ -72,7 +93,6 @@ namespace src
                     {
                         var featureIds = primitive.GetVertexAccessor("_FEATURE_ID_0").AsScalarArray();
                         Console.WriteLine($"FEATURE_ID_0 (unique): {string.Join(',', featureIds.Distinct())}");
-
                     }
                     else
                     {
