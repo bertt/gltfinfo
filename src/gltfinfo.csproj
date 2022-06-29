@@ -6,7 +6,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	<PackAsTool>true</PackAsTool>
 	<PackageOutputPath>./nupkg</PackageOutputPath>
-	<Version>0.2</Version>
+	<Version>0.2.1</Version>
     <Authors>Bert Temme</Authors>
     <Company>Bert Temme</Company>
     <Description>Tooling for getting detailed glTF information</Description>
@@ -31,6 +31,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="FeatureIdAttribute.gltf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="mesh.glb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="nocrash.glb">

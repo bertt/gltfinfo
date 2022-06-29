@@ -33,6 +33,9 @@ namespace src
                 Console.WriteLine("glTF generator: " + glb.Asset.Generator);
                 Console.WriteLine("glTF version:" + glb.Asset.Version);
                 Console.WriteLine("glTF primitives: " + glb.LogicalMeshes[0].Primitives.Count);
+                var transform = glb.DefaultScene.VisualChildren.First().LocalTransform;
+                Console.WriteLine("glTF localTransform: " + transform.ToString() + ", identity: " + transform.IsIdentity);
+
                 var triangles = Toolkit.EvaluateTriangles(glb.DefaultScene).ToList();
                 // triangles.First().A.
                 Console.WriteLine("glTF triangles: " + triangles.Count);
