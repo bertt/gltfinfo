@@ -32,6 +32,7 @@ namespace src
                 Console.WriteLine("glTF model is loaded");
                 Console.WriteLine("glTF generator: " + glb.Asset.Generator);
                 Console.WriteLine("glTF version:" + glb.Asset.Version);
+                Console.WriteLine("glTF copyright:" + glb.Asset.Copyright);
                 Console.WriteLine("glTF primitives: " + glb.LogicalMeshes[0].Primitives.Count);
                 var transform = glb.DefaultScene.VisualChildren.First().LocalTransform;
                 Console.WriteLine("glTF localTransform: " + transform.ToString() + ", identity: " + transform.IsIdentity);

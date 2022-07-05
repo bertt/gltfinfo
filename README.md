@@ -57,5 +57,7 @@ Primitive 0 (TRIANGLES) FEATURE_ID_0 (unique): 0,1,2,3
 
 ## History
 
-- 22-05-22: Version 2.0 - .NET 6.0 and starting support 3D Tiles Next/1.1 
+- 22-07-05: Version 0.2.2 - Adding asset copyright
+
+- 22-05-22: Version 0.2 - .NET 6.0 and starting support 3D Tiles Next/1.1 
 
