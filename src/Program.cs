@@ -100,7 +100,7 @@ namespace src
                     }
                     else
                     {
-                        Console.WriteLine($"No _BATCHID attribute found...");
+                        Console.WriteLine($"No _BATCHID or _FEATURE_ID_0 attribute found...");
                     }
                 }
 

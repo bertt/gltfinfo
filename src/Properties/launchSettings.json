@@ -2,7 +2,7 @@
   "profiles": {
     "gltfinfo": {
       "commandName": "Project",
-      "commandLineArgs": "-i nocrash.glb"
+      "commandLineArgs": "-i FeatureIdAttribute.gltf"
     }
   }
 }
