@@ -27,7 +27,9 @@ namespace src
             try
             {
 
-                var glb = ModelRoot.Load("." + Path.DirectorySeparatorChar + options.Input);
+                var readSettings = new ReadSettings();
+                readSettings.Validation = ValidationMode.TryFix;
+                var glb = ModelRoot.Load("." + Path.DirectorySeparatorChar + options.Input, readSettings);
 
                 Console.WriteLine("glTF model is loaded");
                 Console.WriteLine("glTF generator: " + glb.Asset.Generator);
@@ -107,6 +109,15 @@ namespace src
                 if (glb.ExtensionsUsed.Count() > 0)
                 {
                     Console.WriteLine("glTF extensions used: " + string.Join(',', glb.ExtensionsUsed));
+
+                    //if (glb.ExtensionsUsed.Contains("CESIUM_primitive_outline"))
+                    //{
+                    //    Console.WriteLine("CESIUM_primitive_outline is used");
+                    //}
+                    if (glb.ExtensionsUsed.Contains("EXT_mesh_features"))
+                    {
+                        Console.WriteLine("EXT_mesh_features is used");
+                    }
                 }
                 else
                 {
