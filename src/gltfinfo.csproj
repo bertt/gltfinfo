@@ -20,54 +20,53 @@
 
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.9.1" />
-    <PackageReference Include="SharpGLTF.Core" Version="1.0.0-EXTMeshfeatures" />
     <PackageReference Include="SharpGLTF.Toolkit" Version="1.0.0-EXTMeshfeatures" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="1.glb">
+    <None Update="testfixtures\1.glb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="2.glb">
+    <None Update="testfixtures\2.glb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="BoxWithPrimitiveOutline.gltf">
+    <None Update="testfixtures\BoxWithPrimitiveOutline.gltf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="crash.glb">
+    <None Update="testfixtures\crash.glb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="FeatureIdAttribute.gltf">
+    <None Update="testfixtures\FeatureIdAttribute.gltf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="mesh.glb">
+    <None Update="testfixtures\mesh.glb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="nocrash.glb">
+    <None Update="testfixtures\nocrash.glb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="outlines.bin">
+    <None Update="testfixtures\outlines.bin">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="seat_red.glb">
+    <None Update="testfixtures\seat_red.glb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="seat_red_origin.glb">
+    <None Update="testfixtures\seat_red_origin.glb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="SimplePropertyTexture.gltf">
+    <None Update="testfixtures\SimplePropertyTexture.gltf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="test.bin">
+    <None Update="testfixtures\test.bin">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="test.gltf">
+    <None Update="testfixtures\test.gltf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="testfixtures\outlines.glb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="tree.glb">
+    <None Update="testfixtures\tree.glb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
