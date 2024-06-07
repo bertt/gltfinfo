@@ -1,5 +1,6 @@
 ﻿using CommandLine;
 using gltfinfo;
+using SharpGLTF.Geometry.VertexTypes;
 using SharpGLTF.Schema2;
 using SharpGLTF.Validation;
 using System;
@@ -28,8 +29,8 @@ namespace src
             {
 
                 var readSettings = new ReadSettings();
-                readSettings.Validation = ValidationMode.TryFix;
-                var glb = ModelRoot.Load("." + Path.DirectorySeparatorChar + options.Input, readSettings);
+                readSettings.Validation = ValidationMode.Skip;
+                var glb = ModelRoot.Load(options.Input, readSettings);
 
                 Console.WriteLine("glTF model is loaded");
                 Console.WriteLine("glTF generator: " + glb.Asset.Generator);
@@ -42,7 +43,7 @@ namespace src
                 var triangles = Toolkit.EvaluateTriangles(glb.DefaultScene).ToList();
                 // triangles.First().A.
                 Console.WriteLine("glTF triangles: " + triangles.Count);
-                var print_max_vertices = 3;
+                var print_max_vertices = 100;
                 Console.WriteLine($"glTF vertices (first {print_max_vertices}): ");
 
                 var positions = triangles.SelectMany(item => new[] { item.A.GetGeometry().GetPosition(), item.B.GetGeometry().GetPosition(), item.C.GetGeometry().GetPosition() }.Distinct().ToList());
@@ -59,12 +60,19 @@ namespace src
                 if (triangles.First().A.GetGeometry().TryGetNormal(out Vector3 n))
                 {
                     Console.WriteLine("Vertices do contains normals");
+                    Console.WriteLine($"glTF normals (first): {n} ");
                 }
                 else
                 {
                     Console.WriteLine("Vertices do not contains normals");
                 }
 
+                var material = triangles.First().A.GetMaterial();
+
+                if(material is VertexTexture1)
+                {
+                    Console.WriteLine($"Texcoord first material {material.GetTexCoord(0)}");
+                }
 
                 var xmin = (from p in positions select p.X).Min();
                 var xmax = (from p in positions select p.X).Max();
@@ -110,13 +118,26 @@ namespace src
                 {
                     Console.WriteLine("glTF extensions used: " + string.Join(',', glb.ExtensionsUsed));
 
-                    //if (glb.ExtensionsUsed.Contains("CESIUM_primitive_outline"))
-                    //{
-                    //    Console.WriteLine("CESIUM_primitive_outline is used");
-                    //}
+                    if (glb.ExtensionsUsed.Contains("CESIUM_primitive_outline"))
+                    {
+                        Console.WriteLine("CESIUM_primitive_outline is used");
+                        //var cesiumOutlineExtension = (CesiumPrimitiveOutline)glb.LogicalMeshes[0].Primitives[0].Extensions.FirstOrDefault();
+                        // Assert.NotNull(cesiumOutlineExtension.Indices);
+                        // CollectionAssert.AreEqual(outlines, cesiumOutlineExtension.Indices.AsIndicesArray());
+
+                        // var extension = glb.GetExtension<CesiumPrimitiveOutline>();
+                    }
                     if (glb.ExtensionsUsed.Contains("EXT_mesh_features"))
                     {
                         Console.WriteLine("EXT_mesh_features is used");
+                    }
+                    if (glb.ExtensionsUsed.Contains("EXT_structural_metadata"))
+                    {
+                        Console.WriteLine("EXT_structural_metadata is used");
+                    }
+                    if(glb.ExtensionsUsed.Contains("EXT_mesh_gpu_instancing"))
+                    {
+                        Console.WriteLine("EXT_mesh_gpu_instancing");
                     }
                 }
                 else

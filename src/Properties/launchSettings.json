@@ -2,7 +2,12 @@
   "profiles": {
     "gltfinfo": {
       "commandName": "Project",
-      "commandLineArgs": "-i testfixtures/outlines.glb"
+      "commandLineArgs": "-i D:\\dev\\github.com\\CesiumGS\\3d-tiles-samples\\glTF\\EXT_mesh_features\\FeatureIdTexture\\FeatureIdTExture.gltf"
+    },
+    "mesh_gpu_instancing": {
+      "commandName": "Project",
+      "commandLineArgs": "-i D:\\dev\\github.com\\geodan\\i3dm.export\\src\\bin\\Debug\\net6.0\\output\\11\\content\\2_0_2.glb"
     }
+
   }
 }
